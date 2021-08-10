@@ -1,3 +1,11 @@
 module.exports = {
-  transpileDependencies: ["vuetify"],
+  transpileDependencies: ['vuetify'],
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
 };
