@@ -1,4 +1,4 @@
-import { UserRoleEnum } from '../enums/user';
+export type IUserRoles = 'common' | 'admin';
 
 export interface IUserData {
   id: string;
@@ -7,7 +7,7 @@ export interface IUserData {
   createdAt: string;
   updatedAt: string;
   isActive: boolean;
-  role: UserRoleEnum;
+  roles: IUserRoles[];
 }
 
 export interface IUserState {
@@ -16,4 +16,20 @@ export interface IUserState {
 
 export interface IUserGetters {
   user(state: IUserState): IUserData | null;
+}
+
+export interface ISignUpPayload {
+  user: {
+    name: string;
+    email: string;
+    password: string;
+  };
+}
+
+export interface ILoginPayload {
+  user: {
+    email: string;
+    password: string;
+  };
+  remember: boolean;
 }

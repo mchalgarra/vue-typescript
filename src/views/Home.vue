@@ -15,6 +15,9 @@
         </v-col>
       </v-row>
     </v-toolbar>
+    <div class="home-container">
+      <div class="user-info"></div>
+    </div>
   </v-container>
 </template>
 
@@ -35,12 +38,38 @@ export default Vue.extend({
   },
   methods: {
     login(): void {
-      console.log('Login');
       this.$router.push('login');
     },
     logout(): void {
-      console.log('Logout');
+      this.$store.dispatch('logout');
     },
+  },
+  watch: {
+    user(value) {
+      const info = document.getElementsByClassName('user-info')[0];
+      info.innerHTML = JSON.stringify(value)
+        .replace(/,/g, ',<br />')
+        .replace(/{/g, '{<br />')
+        .replace(/}/g, '<br />}');
+    },
+  },
+  mounted() {
+    const info = document.getElementsByClassName('user-info')[0];
+    info.innerHTML = JSON.stringify(this.user)
+      .replace(/,/g, ',<br />')
+      .replace(/{/g, '{<br />')
+      .replace(/}/g, '<br />}');
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100vh - 48px);
+  width: 100%;
+}
+</style>
