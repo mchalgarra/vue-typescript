@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import { IUserData } from "@/models/interfaces/user";
+import Vue from 'vue';
+import { IUserData } from '@/models/interfaces/user';
 
 export default Vue.extend({
-  name: "Auth",
+  name: 'Auth',
   props: {
     isSignUp: Boolean,
   },
@@ -18,7 +18,7 @@ export default Vue.extend({
   },
   beforeMount() {
     if (this.user) {
-      this.$router.push("/");
+      this.$router.push('/');
     }
     console.log(this.isSignUp);
   },

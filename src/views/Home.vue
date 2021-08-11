@@ -10,7 +10,7 @@
         </v-col>
         <v-col cols="2" style="text-align: right">
           <v-btn text @click="!!user ? logout() : login()">{{
-            !!user ? "Logout" : "Login"
+            !!user ? 'Logout' : 'Login'
           }}</v-btn>
         </v-col>
       </v-row>
@@ -19,10 +19,11 @@
 </template>
 
 <script lang="ts">
-import { IUserData } from "@/models/interfaces/user";
+import { IUserData } from '@/models/interfaces/user';
+import Vue from 'vue';
 
-export default {
-  name: "Home",
+export default Vue.extend({
+  name: 'Home',
   components: {},
   computed: {
     isDark(): boolean {
@@ -34,12 +35,12 @@ export default {
   },
   methods: {
     login(): void {
-      console.log("Login");
-      this.$router.push("login");
+      console.log('Login');
+      this.$router.push('login');
     },
     logout(): void {
-      console.log("Logout");
+      console.log('Logout');
     },
   },
-};
+});
 </script>
